@@ -3,6 +3,11 @@ A fork of liguowang/CrossMap
 
 **Main goal: providing a python (instead of CLI) interface to convert coordinates**
 
+Installation:
+-----------------------------
+::
+
+ pip3 install git+https://github.com/klaasg/CrossMap.git
 
 
 Installation
