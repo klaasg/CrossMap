@@ -1,3 +1,10 @@
+A fork of liguowang/CrossMap
+============================
+
+**Main goal: providing a python (instead of CLI) interface to this tool.**
+
+
+
 Installation
 ==================
 
