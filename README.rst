@@ -13,11 +13,9 @@ Installation:
 Example usage:
 -----------------------------
 .. code:: python
+
     (mapping, t, s) = cm.read_chain_file("/path/to/chain/file")
-    cm.convert_coordinates(mapping, [("X", 10000, 20000), ("Y", 15000, 25000)])
-output:
-.. code:: python
-    
+    cm.convert_coordinates(mapping, [("X", 10000, 20000), ("Y", 15000, 25000)])    
     
     
 *Original README:*
