@@ -14,10 +14,12 @@ Example usage:
 -----------------------------
 .. code:: python
 
-    import crossmap as cm
-    
-    (mapping, t, s) = cm.read_chain_file("/path/to/chain/file")
-    cm.convert_coordinates(mapping, [("X", 10000, 20000), ("Y", 15000, 25000)])    
+    >>> import crossmap as cm
+    >>>
+    >>> (mapping, t, s) = cm.read_chain_file("/path/to/chain/file")
+    >>> cm.convert_coordinates(mapping, [("X", 10000, 20000), ("Y", 15000, 25000)])
+    ([('X', 20000, 30000), ('Y', 25000, 35000)], [])
+    # Result is a tuple of 1) a list of coordinates and 2) a list of errors
     
     
 *Original README:*
