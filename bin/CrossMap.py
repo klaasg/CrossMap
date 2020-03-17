@@ -57,10 +57,10 @@ def convert_coordinates(mapping, chromosomes, starts, ends):
 	errors = list()
 	for i, chromosome in enumerate(chromosomes):
 		res = crossmap_chrom_start_end(mapping, chromosome, starts[i], ends[i])
-        if type(res) is list:
+		if type(res) is list:
 			result.extend(res)	 # result
-        else:
-            errors.extend([res]) # error
+		else:
+			errors.extend([res]) # error
 	return (result, errors)
 
 def convert_tuples(mapping, coordinates):
@@ -87,12 +87,12 @@ def convert_tuples(mapping, coordinates):
 	errors = list()
 	for coordinate in coordinates:
 		res = crossmap_chrom_start_end(mapping, *coordinate)
-        if type(res) is list:
+		if type(res) is list:
 			for r in res:	     # result
 				res_chromosomes.append(r[0])
 				res_starts.append(r[1])
 				res_ends.append(r[2])
-        else:
+		else:
 			errors.extend([res]) # error
 	return (res_chromosomes, res_starts, res_ends, errors)
 
