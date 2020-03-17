@@ -81,15 +81,20 @@ def convert_tuples(mapping, coordinates):
             a list of 3-tuples containing chromosome, start and end point
             a list of errors produced during the converting
     '''
-	result = list()
+	res_chromosomes = list()
+	res_starts = list()
+	res_ends = list()
 	errors = list()
 	for coordinate in coordinates:
 		res = crossmap_chrom_start_end(mapping, *coordinate)
         if type(res) is list:
-            result.extend(res)	 # result
+            for r in res:	     # result
+				res_chromosomes.append(r[0])
+				res_starts.append(r[1])
+				res_ends.append(r[2])
         else:
             errors.extend([res]) # error
-	return (result, errors)
+	return (res_chromosomes, res_starts, res_ends, errors)
 
 def printlog (mesg_lst):
 	'''
