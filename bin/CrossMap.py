@@ -88,12 +88,12 @@ def convert_tuples(mapping, coordinates):
 	for coordinate in coordinates:
 		res = crossmap_chrom_start_end(mapping, *coordinate)
         if type(res) is list:
-            for r in res:	     # result
+			for r in res:	     # result
 				res_chromosomes.append(r[0])
 				res_starts.append(r[1])
 				res_ends.append(r[2])
         else:
-            errors.extend([res]) # error
+			errors.extend([res]) # error
 	return (res_chromosomes, res_starts, res_ends, errors)
 
 def printlog (mesg_lst):
