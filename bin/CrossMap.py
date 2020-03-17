@@ -30,17 +30,66 @@ __maintainer__ = "Liguo Wang"
 __email__ = "wangliguo78@gmail.com"
 __status__ = "Production"
 
-def convert_coordinates(mapping, coordinates):
-	# Convert a list of coordinate-tuples
-    result = list()
-    errors = list()
-    for coordinate in coordinates:
-        res = crossmap_chrom_start_end(mapping, *coordinate)
+def convert_coordinates(mapping, chromosomes, starts, ends):
+	'''
+	Convert coordinates as chromosomes and start & end positions
+
+	Parameters
+	----------
+    mapping : dict
+		mapping obtained from read_chain_file()
+
+    chromosomes : list
+        a list of chromosomes
+    starts : list
+        a list of starts
+    ends : list
+        a list of ends
+
+	Returns
+	--------
+        a tuple containing:
+            a list of 3-tuples containing chromosome, start and end point
+            a list of errors produced during the converting
+    '''
+	assert len(chromosomes) == len(starts) == len(ends), "Unequal amounts of coordinate parts"
+	result = list()
+	errors = list()
+	for i, chromosome in enumerate(chromosomes):
+		res = crossmap_chrom_start_end(mapping, chromosome, starts[i], ends[i])
         if type(res) is list:
-            result.extend(res)	# result
+            result.extend(res)	 # result
         else:
-            errors.extend([res])	# error
-    return (result, errors)
+            errors.extend([res]) # error
+	return (result, errors)
+
+def convert_tuples(mapping, coordinates):
+	'''
+	Convert a list of coordinate-tuples
+
+	Parameters
+	----------
+    mapping : dict
+		mapping obtained from read_chain_file()
+
+    coordinates : list
+		a list of 3-tuples containing a chromosome, start and end
+
+	Returns
+	--------
+        a tuple containing:
+            a list of 3-tuples containing chromosome, start and end point
+            a list of errors produced during the converting
+    '''
+	result = list()
+	errors = list()
+	for coordinate in coordinates:
+		res = crossmap_chrom_start_end(mapping, *coordinate)
+        if type(res) is list:
+            result.extend(res)	 # result
+        else:
+            errors.extend([res]) # error
+	return (result, errors)
 
 def printlog (mesg_lst):
 	'''
