@@ -58,7 +58,7 @@ def convert_coordinates(mapping, chromosomes, starts, ends):
 	for i, chromosome in enumerate(chromosomes):
 		res = crossmap_chrom_start_end(mapping, chromosome, starts[i], ends[i])
         if type(res) is list:
-            result.extend(res)	 # result
+			result.extend(res)	 # result
         else:
             errors.extend([res]) # error
 	return (result, errors)
