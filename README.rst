@@ -8,6 +8,11 @@ Installation:
 ::
 
  pip3 install git+https://github.com/klaasg/CrossMap.git
+ 
+if you want `pip freeze` to contain this github link instead of just 'CrossMap', use
+::
+
+ pip3 install -e git+https://github.com/klaasg/CrossMap.git#egg=CrossMap
 
 
 Example usage:
