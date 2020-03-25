@@ -11,9 +11,9 @@ def main():
     setup(  name = "CrossMap",
             version = "0.4.0",
             python_requires='>=3.5',
-            py_modules = [ 'psyco_full' ],
-            packages = find_packages( 'lib' ),
-            package_dir = { '': 'lib' },
+            py_modules = [ 'CrossMap', 'psyco_full' ],
+            packages = find_packages( 'lib, bin' ),
+            package_dir = { '': 'bin' },
             package_data = { '': ['*.ps'] },
             scripts = glob.glob( "bin/*.py"),
             ext_modules = [],
@@ -23,7 +23,7 @@ def main():
             author_email ="wangliguo78@gmail.com",
             platforms = ['Linux','MacOS'],
             requires = ['cython (>=0.17)'],
-            install_requires = ['cython>=0.17','pysam','bx-python','pyBigWig'], 
+            install_requires = ['cython>=0.17','pysam','bx-python','pyBigWig'],
             description = " Lift over genomics coordinates between assemblies",
             url = "http://crossmap.sourceforge.net/",
             zip_safe = False,
@@ -38,7 +38,7 @@ def main():
                 'Programming Language :: Python',
                 'Topic :: Scientific/Engineering :: Bio-Informatics',
             ],
-            
+
             keywords='Genome coordinates lift over',
              )
 
