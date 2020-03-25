@@ -56,4 +56,3 @@ Documentation
 
 https://crossmap.readthedocs.io/en/latest/
 
-http://crossmap.sourceforge.net/
