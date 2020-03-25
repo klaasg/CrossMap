@@ -25,7 +25,7 @@ __contributor__="Liguo Wang, Hao Zhao"
 __copyright__ = "Copyleft"
 __credits__ = []
 __license__ = "GPLv2"
-__version__="0.4.0"
+__version__="0.4.1"
 __maintainer__ = "Liguo Wang"
 __email__ = "wangliguo78@gmail.com"
 __status__ = "Production"
@@ -745,7 +745,7 @@ def crossmap_maf_file(mapping, infile, outfile, liftoverfile, refgenome, ref_nam
             printlog(["Lifting over ... "])
         else:
 
-            fields = str.split(line)
+            fields = str.split(line, sep = '\t')
             total += 1
 
             fields[3] = ref_name
@@ -1320,7 +1320,7 @@ def crossmap_bam_file(mapping, chainfile, infile,  outfile_prefix, chrom_size, I
                     # R1 unmap, R2 is mapped
                     else:
                         try:
-                            read2_chr = samfile.get_reference_name(old_alignment.next_reference_id)
+                            read2_chr = samfile.get_reference_name(old_alignment.reference_id)
                             read2_strand = '-' if old_alignment.mate_is_reverse else '+'
                             read2_start = old_alignment.next_reference_start
                             read2_end = read2_start + 1
@@ -1473,7 +1473,11 @@ def crossmap_bam_file(mapping, chainfile, infile,  outfile_prefix, chrom_size, I
                             # 10
                             new_alignment.query_sequence = revcomp_DNA(old_alignment.query_sequence)        #reverse complement read sequence
                             # 11
-                            new_alignment.query_qualities = old_alignment.query_qualities[::-1]            #reverse quality string
+                            try:
+                                new_alignment.query_qualities = old_alignment.query_qualities[::-1]			#reverse quality string
+                            except:
+                                new_alignment.query_qualities = []
+
                         elif read1_maps[0][3] == read1_maps[1][3]:    #  same strand
                             # 6
                             new_alignment.cigartuples = old_alignment.cigartuples
