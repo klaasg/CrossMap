@@ -40,7 +40,7 @@ def main():
             ],
 
             keywords='Genome coordinates lift over',
-             )
+            )
 
 
 if __name__ == "__main__":
