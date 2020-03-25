@@ -8,13 +8,18 @@ Installation:
 ::
 
  pip3 install git+https://github.com/klaasg/CrossMap.git
+ 
+if you want `pip freeze` to contain this github link instead of just 'CrossMap', use
+::
+
+ pip3 install -e git+https://github.com/klaasg/CrossMap.git#egg=CrossMap
 
 
 Example usage:
 -----------------------------
 .. code:: python
 
-    >>> import crossmap as cm
+    >>> import CrossMap as cm
     >>>
     >>> (mapping, t, s) = cm.read_chain_file("/path/to/chain/file")
     >>> cm.convert_tuples(mapping, [("X", 10000, 20000), ("Y", 15000, 25000)])
