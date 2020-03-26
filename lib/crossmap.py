@@ -49,21 +49,28 @@ def convert_coordinates(mapping, chromosomes, starts, ends):
     Returns
     --------
         a tuple containing:
-            a list of 3-tuples containing chromosome, start and end point
-            a list of errors produced during the converting
+            a list of chromosomes,
+            a list of start positions,
+            a list of end positions,
+            a list of errors
     '''
     assert len(chromosomes) == len(starts) == len(ends), "Unequal amounts of coordinate parts"
-    result = list()
+    res_chromosomes = list()
+    res_starts = list()
+    res_ends = list()
     errors = list()
     for i, chromosome in enumerate(chromosomes):
         res = crossmap_chrom_start_end(mapping, chromosome, starts[i], ends[i])
         if type(res) is list:
-            result.extend(res)   # result
+            for r in res:       # result
+                res_chromosomes.append(r[0])
+                res_starts.append(r[1])
+                res_ends.append(r[2])
         else:
-            errors.extend([res]) # error
-    return (result, errors)
+            errors.append(res)  # error
+    return (res_chromosomes, res_starts, res_ends, errors)
 
-def convert_tuples(mapping, coordinates):
+def convert_coordinate_tuples(mapping, coordinates):
     '''
     Convert a list of coordinate-tuples
 
@@ -81,20 +88,15 @@ def convert_tuples(mapping, coordinates):
             a list of 3-tuples containing chromosome, start and end point
             a list of errors produced during the converting
     '''
-    res_chromosomes = list()
-    res_starts = list()
-    res_ends = list()
+    result = list()
     errors = list()
     for coordinate in coordinates:
         res = crossmap_chrom_start_end(mapping, *coordinate)
         if type(res) is list:
-            for r in res:        # result
-                res_chromosomes.append(r[0])
-                res_starts.append(r[1])
-                res_ends.append(r[2])
+            result.extend(res)   # result
         else:
             errors.extend([res]) # error
-    return (res_chromosomes, res_starts, res_ends, errors)
+    return (result, errors)
 
 def printlog (mesg_lst):
     '''
