@@ -19,7 +19,7 @@ Example usage:
 -----------------------------
 .. code:: python
 
-    >>> import CrossMap as cm
+    >>> import crossmap as cm
     >>>
     >>> (mapping, t, s) = cm.read_chain_file("/path/to/chain/file")
     >>> cm.convert_tuples(mapping, [("X", 10000, 20000), ("Y", 15000, 25000)])
