@@ -980,11 +980,11 @@ def crossmap_bed_file(mapping, inbed, outfile=None):
 def crossmap_chrom_start_end(mapping, chrom, start, end):
     error=False
     try:
-        int(start)
+        start = int(start)
     except:
         return "\"start\" is not an integer"
     try:
-        int(end)
+        end = int(end)
     except:
         return "\"end\" is not an integer"
     if int(start) > int(end):
